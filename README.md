@@ -8,13 +8,10 @@ See https://github.com/heavywater/chef-s6/blob/master/recipes/examples.rb for an
 Changes
 =======
 
+## v0.0.2
+Some modernization of the build, testing the viability of s6 in place of runit.
+
 ## v0.0.1
-
-Roadmap
--------
-
-* Publish Heavy Water public signed APT repository with S6 packages, consume those in a "package" recipe
-* Pennyworth-built package integration
 
 Requirements
 ============

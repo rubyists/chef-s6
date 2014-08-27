@@ -4,6 +4,7 @@
 #
 # Copyright 2008-2009, Opscode, Inc.
 # Copyright 2012, AJ Christensen <aj@junglist.gen.nz>
+# Copyright 2014, Kevin Berry <kb@rubyists.com>
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -23,15 +24,15 @@ default.s6.base_url = "http://www.skarnet.org/software"
 default.s6.packages = Array.new
 
 default.s6.packages << { "skalibs" =>
-  { "type" => "prog", "version" => "1.2.7" }
+  { "type" => "prog", "version" => "1.6.0.0" }
 }
 
 default.s6.packages << { "execline" =>
-  { "type" => "admin", "version" => "1.1.4" }
+  { "type" => "admin", "version" => "1.3.1.1" }
 }
 
 default.s6.packages << { "s6" =>
-  { "type" => "admin", "version" => "0.16" }
+  { "type" => "admin", "version" => "1.1.3.2" }
 }
 
 case platform

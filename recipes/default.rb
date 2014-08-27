@@ -3,6 +3,7 @@
 # Recipe:: default
 #
 # Copyright 2012, AJ Christensen <aj@junglist.gen.nz>
+# Copyright 2014, Kevin Berry <kb@rubyists.com>
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -16,8 +17,6 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-# We're compiling this for now.
-# TODO: build with Pennyworth, publish public repository
 include_recipe "build-essential"
 
 # Some of the compilation steps require entropy
@@ -111,8 +110,9 @@ EOH
   mode 00644
 end
 
+# This depends on Upstart, refactor for sysvinit, openrc, and systemd support
 case node['platform']
-when "debian", "ubuntu"
+when "ubuntu" 
   template "/etc/init/s6-svscan.conf" do
     mode 00644
   end
@@ -122,4 +122,3 @@ when "debian", "ubuntu"
     action [:enable, :start]
   end
 end
-

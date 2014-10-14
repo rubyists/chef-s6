@@ -37,7 +37,17 @@ end
     pkg = package.keys.first
     options = package.values.first
     Chef::Log.info "s6: installing #{package.inspect}"
-    package_dir = "/package"
+    package_dir = "/usr/local/package"
+
+    directory package_dir do
+      recursive true
+      mode 1755
+    end
+
+    link "/package" do
+      to "/usr/local/package"
+    end
+
     package_version = "#{pkg}-#{options['version']}"
     package_tarball = package_version + ".tar.gz"
     package_tarball_path = File.join(package_dir, package_tarball)
@@ -46,11 +56,6 @@ end
     url.path = File.join(url.path, pkg, package_tarball)
 
     package_url = url.to_s
-
-    directory package_dir do
-      mode 01755
-      recursive true
-    end
 
     remote_file package_tarball_path do
       source package_url
